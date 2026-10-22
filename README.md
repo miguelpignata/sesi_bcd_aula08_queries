@@ -100,23 +100,23 @@ select * from pedido;
 ## 🗃️🔍 Queries de busca:
 
 1. Listando produtos:
-```
+```sql
 SELECT id, nome FROM produto ORDER BY nome ASC;
 ```
 2. Produtos mais recentes:
-```
+```sql
 SELECT * FROM produto ORDER BY id DESC LIMIT 5;
 ```
 3. Maiores pedidos:
-```
+```sql
 SELECT id, quantidade, valor_unitario FROM pedido ORDER BY valor_unitario DESC;
 ```
 4. Primeiros pedidos:
-```
+```sql
 SELECT * FROM pedido ORDER BY id DESC LIMIT 10;
 ```
 5. Pedidos com nomes dos clientes:
-```
+```sql
 SELECT 
     p.id AS id_pedido,
     c.nome AS nome_cliente,
@@ -126,7 +126,7 @@ FROM pedido p
 JOIN cliente c ON p.id_cliente = c.id;
 ```
 6. Pedidos com nome do produto:
-```
+```sql
 SELECT 
     p.id AS id_pedido,
     pr.nome AS nome_produto,
@@ -136,7 +136,7 @@ FROM pedido p
 JOIN produto pr ON p.id_produto = pr.id;
 ```
 7. Pedidos completos:
-```
+```sql
 SELECT 
     p.id AS id_pedido,
     c.nome AS nome_cliente,
@@ -149,7 +149,7 @@ JOIN cliente c ON p.id_cliente = c.id
 JOIN produto pr ON p.id_produto = pr.id;
 ```
 8. Os 5 pedidos de maior valor:
-```
+```sql
 SELECT 
     c.nome AS nome_cliente,
     pr.nome AS nome_produto,
@@ -161,15 +161,15 @@ ORDER BY p.subtotal DESC
 LIMIT 5;
 ```
 9. Quantidade de clientes:
-```
+```sql
 SELECT COUNT(*) AS total_clientes FROM cliente;
 ```
 10. Quantidade de produtos:
-```
+```sql
 SELECT COUNT(*) AS total_produtos FROM produto;
 ```
 11. Quantidade de pedidos por cliente:
-```
+```sql
 SELECT 
     c.nome AS nome_cliente,
     COUNT(p.id) AS quantidade_pedidos
@@ -178,7 +178,7 @@ JOIN pedido p ON c.id = p.id_cliente
 GROUP BY c.id, c.nome;
 ```
 12. Quantidade de pedidos por produto:
-```
+```sql
 SELECT 
     pr.nome AS nome_produto,
     COUNT(p.id) AS vezes_pedido
@@ -188,15 +188,15 @@ GROUP BY pr.id, pr.nome
 ORDER BY vezes_pedido DESC;
 ```
 13. Valor total dos pedidos:
-```
+```sql
 SELECT SUM(subtotal) AS valor_total_geral FROM pedido;
 ```
 14. Quantidade média por pedido:
-```
+```sql
 SELECT AVG(quantidade) AS media_quantidade_por_pedido FROM pedido;
 ```
 15. Total vendido por produto:
-```
+```sql
 SELECT 
     pr.nome AS nome_produto,
     SUM(p.subtotal) AS total_vendido
